@@ -115,25 +115,21 @@ The main problem addressed in this work is
 
 \section{Possible Approach}
 
-The current assignment is a preliminary bibliographic investigation, not
-the implementation of a connectome analysis. The review will identify
-research directions, datasets, and computational methods related to the
-larval \textit{Drosophila melanogaster} connectome. The longer-term research
-idea is to use the literature to select a connectome, analyze its graph,
-perform in-silico ablation, and evaluate functional consequences.
+This assignment begins with a quantitative literature review of the larval
+\textit{Drosophila melanogaster} connectome. The longer-term research idea
+is to select a suitable connectome dataset, analyze its graph, perform
+in-silico ablation, and evaluate functional consequences if a validated
+functional measure is available.
 
 \subsection{Scope and Objectives}
 
-The preliminary quantitative question is: \textit{How has research on the
-larval \textit{D. melanogaster} connectome developed, and which datasets,
-circuits, and computational methods are represented?} The investigation will
-describe publication counts by year, publication type, citation counts, and
-keyword frequency. The planned bibliographic window is 2015--2024, a
-10-year period that omits both the current year and the preceding year.
-The available exports were originally collected for 2010--2026; therefore,
-the reported decade figures below are a retrospective filter of those
-exports, not a new database search. The exact search date was not recorded
-and must be recovered or documented when the search is repeated.
+The preliminary quantitative question is: \textit{How has research on the larval \textit{D. melanogaster} connectome
+developed, and which datasets and computational methods are represented?}
+Initial quantitative measures are publication counts, citation counts,
+keywords, and screening decisions. The reported 2015--2024 period is a
+retrospective filter of the existing 2010--2026 exports, not a new search.
+The Scopus API log is dated 4 November 2026. The exact date and query history
+for the direct Web of Science (WoS) website search were not retained.
 
 The target records are journal articles and conference papers reporting
 primary research on larval \textit{D. melanogaster} connectivity, connectome
@@ -171,38 +167,47 @@ Data and methods & ``electron microscopy''; ``serial section'';
 \end{tabular}
 \end{table}
 
-Within each concept block, related terms are combined with OR; the organism,
-life-stage, and connectivity/method blocks are combined with AND. The
-recorded Scopus searches used three advanced-query variants: connectome and
-connectivity terms; microscopy and reconstruction terms; and neural-circuit
-terms. Their exact search strings are in \texttt{search.txt}. The original
-script applied the 2010--2026 year filter. For the planned 2015--2024
-replication, that filter must be changed to exclude years before 2015 and
-after 2024. The generic term ``fly'' in one original query may retrieve
-irrelevant records and should be removed or justified during iterative
-refinement.
-
-Scopus and the Web of Science Core Collection are the databases represented
-in the supplied files. They provide multidisciplinary bibliographic records
-and citation metadata relevant to a topic spanning neuroscience and
-computational methods. Scopus records were exported as CSV and WoS records
-as XLS files; records were combined into CSV for screening. The exact WoS
-query, search date, and database filters are not present in the supplied
-files. A translated WoS query and the documentation checklist are provided
-in \texttt{search.txt}; the translation must be verified in the advanced
-search interface before being reported as executed.
+Within each concept block, related terms are combined with OR; concept
+blocks are combined with AND. Three query variants cover connectome terms,
+microscopy/reconstruction, and neural circuits. The field-neutral Boolean
+expressions are listed in \texttt{search.txt}; the Scopus script maps them
+to the database field syntax and applies the 2010--2026 publication-year
+filter. Scopus returned 142, 378, and 57 results for the three queries
+(577 query results including overlap), which produced 488 unique Scopus
+records. The researcher searched WoS directly on its website and exported
+the three \texttt{savedrecs} files. The exact WoS interface query and date
+remain undocumented, so the search should be rerun and logged before the
+review is considered systematic and complete.
 
 \subsection{Screening and Preliminary Results}
 
-The Scopus and WoS exports contain 568 records dated 2015--2024: 340 from
-Scopus and 228 across the three WoS exports. Deduplication removed 184
-records, all matched by DOI in this date range, leaving 384 unique records
-for screening. The screening file contains 343 records with an abstract
-(89.3\%) and 41 without one (10.7\%). Missing abstracts are retained for
-manual review rather than automatically excluded.
+\begin{table}[htbp]
+\caption{Source records and deduplication (2015--2024)}
+\label{tab:source-counts}
+\centering
+\scriptsize
+\begin{tabular}{|p{0.40\linewidth}|r|r|r|}
+\hline
+\textbf{Source export} & \textbf{Records} & \textbf{Duplicates} & \textbf{Retained} \\
+\hline
+Scopus API & 340 & 1 & 339 \\
+WoS \texttt{savedrecs (7).xls} & 79 & 69 & 10 \\
+WoS \texttt{savedrecs (8).xls} & 116 & 81 & 35 \\
+WoS \texttt{savedrecs (9).xls} & 33 & 33 & 0 \\
+\hline
+\textbf{Total} & \textbf{568} & \textbf{184} & \textbf{384} \\
+\hline
+\end{tabular}
+\end{table}
+
+The 184 duplicates were matched by DOI. The Scopus export has abstracts for
+269 of its 340 records in this period. Missing abstracts were looked up
+manually where accessible, as reported by the researcher; per-record source
+provenance was not retained. The final merged screening set has 343
+abstracts (89.3\%) and 41 missing abstracts (10.7\%).
 
 \begin{table}[htbp]
-\caption{Preliminary ten-year screening counts (2015--2024)}
+\caption{Preliminary screening counts (2015--2024)}
 \label{tab:screening-counts}
 \centering
 \footnotesize
@@ -210,15 +215,9 @@ manual review rather than automatically excluded.
 \hline
 \textbf{Stage or label} & \textbf{Records} & \textbf{Percent} \\
 \hline
-Scopus export & 340 & -- \\
-Web of Science exports & 228 & -- \\
-Records before deduplication & 568 & 100.0\% \\
-Duplicate records removed & 184 & 32.4\% \\
-Unique records screened & 384 & 67.6\% \\
-\hline
-Possible inclusion (current label) & 21 & 5.5\% \\
-Exclusion (current label) & 354 & 92.2\% \\
-Unclear (current label) & 9 & 2.3\% \\
+Possible inclusion (preliminary label) & 21 & 5.5\% \\
+Exclude (preliminary label) & 354 & 92.2\% \\
+Unclear (preliminary label) & 9 & 2.3\% \\
 \hline
 Abstract available & 343 & 89.3\% \\
 Abstract missing & 41 & 10.7\% \\
@@ -238,14 +237,11 @@ its retrieval date was not recorded. Author/index keywords are present for
 ``Drosophila melanogaster'' and ``Drosophila-melanogaster'' must be normalized
 before interpreting keyword trends.
 
-Current INCLUDE/EXCLUDE/UNCLEAR labels are preliminary screening labels, not
-independently verified eligibility decisions. The 21 possible inclusions and
-9 unclear records require manual/full-text assessment. The database-level
-counts reconcile for this retrospective decade subset, but the original
-search dates and the exact WoS query still need to be documented. Aggregate
-results are in \texttt{counts.csv}; \texttt{stats.py} regenerates them from
-the local exports. Raw bibliographic exports are not included in the shared
-project.
+The INCLUDE/EXCLUDE/UNCLEAR decisions are preliminary. The 21 possible
+inclusions and 9 unclear records require full-text assessment. The source,
+deduplication, and screening totals reconcile. Aggregate extraction outputs,
+query logs, criteria, and scripts are available in the project repository
+\cite{repo}; raw database exports and record-level abstracts are excluded.
 
 \subsection{Proposed Connectome Research Pipeline}
 
@@ -257,20 +253,15 @@ and compare predefined circuit or task-related measures before and after
 ablation. No connectome analysis, ablation, or functional evaluation has yet
 been performed.
 
-\begin{figure}[htbp]
+\begin{figure*}[!t]
 \centering
-\includegraphics[width=0.82\linewidth]{pipe.png}
-\caption{Proposed research pipeline: Literature Review, Connectome Analysis,
-Ablation, and Functional Evaluation. The last three steps are future work.}
+\includegraphics[width=0.95\textwidth]{pipe.png}
+\caption{Numbered project workflow. The literature-review counts are
+preliminary; connectome analysis, ablation, and functional evaluation are
+future work.}
 \label{fig:workflow}
-\end{figure}
+\end{figure*}
 \begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+\bibitem{repo} A. Nica, ``The Road to the Complete Larval Drosophila Connectome,'' GitHub repository. [Online]. Available: \texttt{https://github.com/NicaAnatol/The-Road-to-the-Complete-Larval-Drosophila-Connectome}
 \end{thebibliography}
 \end{document}

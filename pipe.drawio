@@ -1,29 +1,38 @@
-<mxfile host="app.diagrams.net" modified="2026-11-11T13:55:00.000Z" agent="diagrams.net" version="24.7.17" type="device">
-  <diagram id="review-pipeline" name="Workflow">
-    <mxGraphModel dx="720" dy="960" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="720" pageHeight="960" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-11-11T14:50:00.000Z" agent="diagrams.net" version="24.7.17" type="device">
+  <diagram id="research-pipeline" name="Research pipeline">
+    <mxGraphModel dx="1200" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1000" background="#000000" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
-        <mxCell id="literature" value="Literature Review&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Search, deduplication, and screening&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#172554;fontSize=20;fontStyle=1;spacing=12;" vertex="1" parent="1">
-          <mxGeometry x="130" y="60" width="460" height="130" as="geometry"/>
+        <mxCell id="title" value="WHAT IS DONE / WHAT COMES NEXT" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=28;fontStyle=1;fontColor=#F3F4F6;" vertex="1" parent="1">
+          <mxGeometry x="25" y="20" width="1150" height="55" as="geometry"/>
         </mxCell>
-        <mxCell id="connectome" value="Connectome Analysis&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Represent connectivity as a graph&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#14532d;fontSize=20;fontStyle=1;spacing=12;" vertex="1" parent="1">
-          <mxGeometry x="130" y="310" width="460" height="130" as="geometry"/>
+        <mxCell id="subtitle" value="Project status: the literature review is preliminary; stages 2-4 are proposed work." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=17;fontColor=#D1D5DB;" vertex="1" parent="1">
+          <mxGeometry x="35" y="78" width="1130" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="ablation" value="Ablation&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;In-silico removal of selected nodes or edges&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#fef3c7;strokeColor=#d97706;fontColor=#78350f;fontSize=20;fontStyle=1;spacing=12;" vertex="1" parent="1">
-          <mxGeometry x="130" y="560" width="460" height="130" as="geometry"/>
+        <mxCell id="review" value="&lt;b&gt;1. LITERATURE REVIEW&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#A5C8FF&quot;&gt;COMPLETED - PRELIMINARY&lt;/font&gt;&lt;hr&gt;&lt;div align=&quot;left&quot;&gt;Search: Scopus API + WoS website&lt;br&gt;Scopus 340 -&gt; 339 retained&lt;br&gt;WoS #7: 79 -&gt; 10 | #8: 116 -&gt; 35 | #9: 33 -&gt; 0&lt;br&gt;Total: 568 -&gt; 184 duplicates -&gt; 384 unique&lt;br&gt;Screen: 21 possible | 354 exclude | 9 unclear&lt;br&gt;Abstracts: 343/384; Scopus export 269/340&lt;br&gt;&lt;b&gt;Next:&lt;/b&gt; full-text check of 21 possible + 9 unclear&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#181818;strokeColor=#9CA3AF;strokeWidth=2;fontColor=#F3F4F6;fontSize=18;align=center;verticalAlign=top;spacing=16;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="35" y="155" width="530" height="330" as="geometry"/>
         </mxCell>
-        <mxCell id="functional" value="Functional Evaluation&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Compare circuit or task measures before and after&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#f3e8ff;strokeColor=#9333ea;fontColor=#581c87;fontSize=20;fontStyle=1;spacing=12;" vertex="1" parent="1">
-          <mxGeometry x="130" y="810" width="460" height="130" as="geometry"/>
+        <mxCell id="analysis" value="&lt;b&gt;2. CONNECTOME ANALYSIS&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#A5C8FF&quot;&gt;NEXT&lt;/font&gt;&lt;hr&gt;&lt;div align=&quot;left&quot;&gt;Select a larval connectome dataset from the review&lt;br&gt;Represent it as a graph G=(V,E)&lt;br&gt;Measure nodes, edges, degree, components, and reachability&lt;br&gt;Document direction, weights, and data limitations&lt;br&gt;&lt;b&gt;Output:&lt;/b&gt; reproducible baseline graph profile&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#181818;strokeColor=#9CA3AF;strokeWidth=2;fontColor=#F3F4F6;fontSize=18;align=center;verticalAlign=top;spacing=16;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="635" y="155" width="530" height="330" as="geometry"/>
         </mxCell>
-        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#475569;endArrow=block;endFill=1;" edge="1" parent="1" source="literature" target="connectome">
+        <mxCell id="ablation" value="&lt;b&gt;3. ABLATION&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#A5C8FF&quot;&gt;THEN&lt;/font&gt;&lt;hr&gt;&lt;div align=&quot;left&quot;&gt;Remove selected nodes or edges in silico&lt;br&gt;Compare predeclared targets with matched random removals&lt;br&gt;Measure changes in connectivity, reachability, components, and path length&lt;br&gt;Repeat random controls and report effect sizes&lt;br&gt;&lt;b&gt;Output:&lt;/b&gt; targeted effects relative to baseline controls&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#181818;strokeColor=#9CA3AF;strokeWidth=2;fontColor=#F3F4F6;fontSize=18;align=center;verticalAlign=top;spacing=16;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="635" y="565" width="530" height="330" as="geometry"/>
+        </mxCell>
+        <mxCell id="evaluation" value="&lt;b&gt;4. FUNCTIONAL EVALUATION&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#A5C8FF&quot;&gt;CONDITIONAL&lt;/font&gt;&lt;hr&gt;&lt;div align=&quot;left&quot;&gt;Requires a validated functional annotation, circuit model, or task score&lt;br&gt;Compare a defined score after targeted ablation and random controls&lt;br&gt;Report score changes and variation across controls&lt;br&gt;&lt;b&gt;If no functional measure exists:&lt;/b&gt; report structural effects only; do not infer behavior&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#181818;strokeColor=#9CA3AF;strokeWidth=2;fontColor=#F3F4F6;fontSize=18;align=center;verticalAlign=top;spacing=16;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="35" y="565" width="530" height="330" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#9CA3AF;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="review" target="analysis">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#475569;endArrow=block;endFill=1;" edge="1" parent="1" source="connectome" target="ablation">
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#9CA3AF;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="analysis" target="ablation">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#475569;endArrow=block;endFill=1;" edge="1" parent="1" source="ablation" target="functional">
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#9CA3AF;endArrow=block;endFill=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="ablation" target="evaluation">
           <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="Only literature-screening counts are current results. Stages 2-4 have not been performed." style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#181818;strokeColor=#9CA3AF;fontColor=#D1D5DB;fontSize=17;fontStyle=1;spacing=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="35" y="925" width="1130" height="48" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>

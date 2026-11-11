@@ -1,0 +1,5 @@
+search_date,source,query_id,results_returned,records_retrieved,new_unique_records
+2026-11-04,Scopus Search API,Q1,142,142,142
+2026-11-04,Scopus Search API,Q2,378,378,346
+2026-11-04,Scopus Search API,Q3,57,57,0
+2026-11-04,Scopus Search API,Total (overlap included),577,577,488

@@ -1,0 +1,10 @@
+stage,decision,rule,notes
+Title and abstract,Include,Original research about the larval stage of Drosophila melanogaster with direct evidence about neural connectivity or connectome datasets.,Mixed-stage studies are eligible only if larval findings can be identified separately.
+Title and abstract,Include,Original research developing or applying computational methods to larval Drosophila connectomics.,Examples include EM image processing; neuron or synapse segmentation; tracing; reconstruction; proofreading; connectome data infrastructure; graph or network analysis of larval connectivity.
+Title and abstract,Exclude,Not Drosophila melanogaster or not the larval stage.,Do not exclude mixed-stage records if larval data may be separable.
+Title and abstract,Exclude,No neural connectivity or connectome contribution relevant to the research question.,Behavioral or physiological findings alone are insufficient unless directly linked to larval circuit/connectivity data.
+Title and abstract,Exclude,Review, editorial, commentary, or other non-primary publication from the primary-study synthesis.,Keep potentially useful reviews separately for background and reference-list searching; do not count them as primary studies.
+Title and abstract,Unclear,Abstract missing or title/abstract does not establish species, developmental stage, primary-study status, or connectome/computational relevance.,Do not exclude solely for a missing abstract; retrieve full text or check references.
+Full text,Include,Full text confirms all population, primary-study, and connectome/computational relevance criteria.,Extract year, larval stage, dataset/brain-region coverage, neurons, synapses, EM/reconstruction methods, computational contribution, validation, and stated limitations.
+Full text,Exclude,Full text confirms a prespecified exclusion criterion.,Record one primary exclusion reason per report for the PRISMA flow.
+Full text,Unclear,Full text unavailable or eligibility cannot be resolved from accessible evidence.,Record as unavailable/unresolved; do not silently count as excluded for irrelevance.

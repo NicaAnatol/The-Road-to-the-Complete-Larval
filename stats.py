@@ -47,12 +47,16 @@ def main():
     parser.add_argument("--start-year", type=int, default=2015)
     parser.add_argument("--end-year", type=int, default=2024)
     parser.add_argument("--output", type=Path, default=Path("counts.csv"))
+    parser.add_argument(
+        "--source-output", type=Path, default=Path("source_counts.csv")
+    )
     args = parser.parse_args()
 
     if args.start_year > args.end_year:
         raise ValueError("start-year must be less than or equal to end-year")
 
     source_counts = Counter()
+    source_abstracts = Counter()
     source_years = {}
     scopus = pd.read_csv(
         args.scopus, dtype=str, keep_default_na=False, encoding="utf-8-sig"
@@ -65,6 +69,7 @@ def main():
             source_years[(source, source_id)] = year
         if year is not None and args.start_year <= year <= args.end_year:
             source_counts[source] += 1
+            source_abstracts[source] += bool(row.get("abstract", "").strip())
 
     wos_files = sorted(Path(".").glob(args.wos_pattern))
     if not wos_files:
@@ -80,6 +85,9 @@ def main():
                 source_years[(source, source_id)] = year
             if year is not None and args.start_year <= year <= args.end_year:
                 source_counts[source] += 1
+                source_abstracts[source] += bool(
+                    str(row.get("Abstract", "")).strip()
+                )
 
     decisions = read_csv(args.decisions)
     records = [
@@ -100,6 +108,7 @@ def main():
 
     duplicates = read_csv(args.duplicates)
     duplicate_methods = Counter()
+    duplicate_sources = Counter()
     for row in duplicates:
         key = (row["duplicate_source"], row["duplicate_source_id"])
         if key not in source_years:
@@ -107,6 +116,7 @@ def main():
         year = source_years[key]
         if args.start_year <= year <= args.end_year:
             duplicate_methods[row["match_method"].strip()] += 1
+            duplicate_sources[row["duplicate_source"]] += 1
 
     identified = sum(source_counts.values())
     unique_count = len(records)
@@ -116,6 +126,29 @@ def main():
             "Source, screening, and duplicate totals do not reconcile: "
             f"{identified} - {unique_count} != {duplicate_count}"
         )
+
+    source_rows = []
+    for source, raw_count in sorted(source_counts.items()):
+        removed = duplicate_sources[source]
+        source_rows.append({
+            "source": source,
+            "platform": (
+                "Scopus Search API" if source == "Scopus"
+                else "Web of Science website export"
+            ),
+            "records_2015_2024": raw_count,
+            "abstracts_in_source_export": source_abstracts[source],
+            "duplicates_removed": removed,
+            "retained_unique_records": raw_count - removed,
+        })
+    source_rows.append({
+        "source": "All sources",
+        "platform": "Scopus + Web of Science",
+        "records_2015_2024": identified,
+        "abstracts_in_source_export": sum(source_abstracts.values()),
+        "duplicates_removed": duplicate_count,
+        "retained_unique_records": unique_count,
+    })
 
     rows = []
 
@@ -231,11 +264,27 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
 
+    with args.source_output.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=[
+                "source",
+                "platform",
+                "records_2015_2024",
+                "abstracts_in_source_export",
+                "duplicates_removed",
+                "retained_unique_records",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(source_rows)
+
     print(
         f"{args.start_year}-{args.end_year}: {identified} identified, "
         f"{duplicate_count} duplicates removed, {unique_count} unique records"
     )
     print(f"Wrote {len(rows)} aggregate rows to {args.output}")
+    print(f"Wrote source-level counts to {args.source_output}")
 
 
 if __name__ == "__main__":

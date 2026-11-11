@@ -1,41 +1,36 @@
 Review question
-How has research on the larval Drosophila melanogaster connectome developed, and which datasets, circuits, and computational methods are represented?
+How has research on the larval Drosophila melanogaster connectome developed, and which datasets and computational methods are reported?
 
-Scope for the preliminary decade analysis
-Publication years: 2015-2024 inclusive
-Document types: primary journal articles and conference papers; reviews for background only
-Search date: not recorded in the supplied files; recover or record the date on rerun
-Boundary note: the source exports were originally searched for 2010-2026; the 2015-2024 results are a retrospective subset, not a fresh search
+Analysis scope
+Publication years analyzed: 2015-2024 inclusive
+Original Scopus API filter: 2010-2026 inclusive
+The 2015-2024 counts are a retrospective filter of the existing exports, not a new database search.
+Scopus API search date recorded in the local search log: 2026-11-04
+Web of Science was searched directly on its website. Its exact search date and query history were not retained.
 
-Keyword matrix
-Organism: Drosophila melanogaster; drosophila; "fruit fly"
-Life stage: larva; larvae; larval
-Connectivity: connectome; connectomic; "synaptic connectivity"; "wiring diagram"; "neural circuit"; "neuronal circuit"
-Data and methods: "electron microscopy"; "serial section"; "volume EM"; neuron reconstruction; circuit reconstruction
-Controlled vocabulary check: map these candidate terms against IEEE Taxonomy, ACM CCS, Scopus indexed terms, and WoS Keywords Plus before rerunning
-Boolean logic: OR within concept blocks; AND between organism, life-stage, and connectivity/method blocks
+Boolean search blocks
+The following are the core Boolean expressions without database field wrappers or year filters. OR combines synonyms within a concept; AND combines organism, life stage, and connectivity/method concepts.
 
-Scopus queries recorded in test.py
-TITLE-ABS-KEY((drosophila OR "fruit fly" OR "fly") AND (larva* OR larval) AND (connectom* OR "wiring diagram" OR "synaptic connectivity"))
-TITLE-ABS-KEY(drosophila AND (larva* OR larval) AND ("electron microscopy" OR "serial section*" OR "volume EM" OR "neuron reconstruction" OR "circuit reconstruction"))
-TITLE-ABS-KEY(drosophila AND (larva* OR larval) AND ("neural circuit*" OR "neuronal circuit*") AND (connectom* OR "electron microscop*"))
-Original Scopus year filter: PUBYEAR > 2009 AND PUBYEAR < 2027
-Recommended rerun filter: PUBYEAR > 2014 AND PUBYEAR < 2025
-Note: remove or justify the broad term "fly" during query refinement.
+Query 1
+(drosophila OR "fruit fly" OR "fly") AND (larva* OR larval) AND (connectom* OR "wiring diagram" OR "synaptic connectivity")
 
-WoS Core Collection query
-Exact original query not present in the supplied files. Proposed advanced-query translation for verification:
-TS=((drosophila OR "fruit fly" OR fly) AND (larva* OR larval) AND (connectom* OR "wiring diagram" OR "synaptic connectivity" OR "electron microscopy" OR "serial section*" OR "volume EM" OR "neuron reconstruction" OR "circuit reconstruction" OR "neural circuit*" OR "neuronal circuit*"))
-Apply the 2015-2024 publication-year boundary in WoS filters; record the exact interface filter and result count.
+Query 2
+drosophila AND (larva* OR larval) AND ("electron microscopy" OR "serial section*" OR "volume EM" OR "neuron reconstruction" OR "circuit reconstruction")
 
-Database rationale and export
-Scopus and Web of Science Core Collection are represented in the existing exports and provide multidisciplinary bibliographic and citation metadata.
-Existing export formats: Scopus CSV; WoS XLS; combined screening CSV.
-Search dates, exact WoS query, document-type filter, and per-query result counts were not retained and must be documented on rerun.
+Query 3
+drosophila AND (larva* OR larval) AND ("neural circuit*" OR "neuronal circuit*") AND (connectom* OR "electron microscop*")
 
-Eligibility and screening
-Include primary studies of larval Drosophila melanogaster using connectomic, synaptic-connectivity, or neural-circuit reconstruction evidence.
-Exclude other species or life stages, non-primary publications from the primary-study synthesis, and studies without relevant connectivity evidence.
-Retain records with missing abstracts for manual assessment.
-Deduplicate by DOI, then normalized title and publication year; manually resolve conflicting matches.
-Screen titles and abstracts, then assess potentially eligible full texts and record exclusion reasons.
+Scopus API mapping and run
+The generic Boolean expressions were mapped to the Scopus Search API using its TITLE-ABS-KEY field syntax and the original 2010-2026 publication-year filter. The query strings and result counts are listed in search_runs.csv. The current scopus search script keeps QUERIES as the field-neutral expressions and applies the Scopus wrapper and year filter at request time.
+
+Web of Science mapping and exports
+The query blocks were searched directly on the Web of Science website, as reported by the researcher. The downloaded savedrecs (7).xls, savedrecs (8).xls, and savedrecs (9).xls files are the WoS exports used in the merge. The downloaded records were filtered to 2015-2024 for the counts in source_counts.csv. The exact WoS interface settings and search date should be added from the original browser/search history if available.
+
+Abstract handling
+The Scopus Search API export contains incomplete abstract coverage. In the 2015-2024 Scopus export, 269 of 340 rows have an abstract and 71 do not. Missing abstracts were manually looked up where accessible, as reported by the researcher. The local database also shows an OpenAlex enrichment check for all 488 Scopus records, but per-record abstract provenance was not preserved; therefore the number of abstracts obtained manually cannot be separated from other enrichment in the merged files. The final merged screening set has 343 abstracts among 384 unique records.
+
+Screening and deduplication
+The analysis script filters by publication year, imports the three WoS XLS exports and Scopus CSV, and checks duplicate-log identifiers against the source exports. Deduplication used DOI, then normalized title and year when DOI matching was unavailable. The 2015-2024 source, duplicate, and retained counts are in source_counts.csv. Screening criteria are in screening_criteria.csv. Existing INCLUDE/EXCLUDE/UNCLEAR labels and their rationales were used for preliminary counts; full-text eligibility still requires review.
+
+Controlled vocabulary and limits
+Candidate terms should be checked against IEEE Taxonomy, ACM CCS, Scopus indexed terms, and WoS Keywords Plus before rerunning. The original broad term "fly" may retrieve unrelated records and should be evaluated during query refinement. Search dates, exact WoS query history, and per-record abstract provenance are not available in the retained exports.
