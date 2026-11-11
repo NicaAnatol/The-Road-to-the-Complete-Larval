@@ -1,15 +1,13 @@
 Review question
-How has research on the larval Drosophila melanogaster connectome developed, and which datasets and computational methods are reported?
+How did imaging and computational reconstruction methods enable increasingly large-scale larval Drosophila melanogaster connectomics, and how did reported dataset scale and coverage change?
 
-Analysis scope
-Publication years analyzed: 2015-2024 inclusive
-Original Scopus API filter: 2010-2026 inclusive
-The 2015-2024 counts are a retrospective filter of the existing exports, not a new database search.
-Scopus API search date recorded in the local search log: 2026-11-04
-Web of Science was searched directly on its website. Its exact search date and query history were not retained.
+Search scope
+The supplied Scopus and Web of Science exports cover the planned publication-year range 2010-2026. The 2026 records are partial. The 2015-2024 tables are retrospective summaries of the existing exports, not a separate search.
+The Scopus Search API query date recorded in the local log is 2026-11-04.
+Web of Science was searched directly on its website. The exact query history and search date were not retained.
 
 Boolean search blocks
-The following are the core Boolean expressions without database field wrappers or year filters. OR combines synonyms within a concept; AND combines organism, life stage, and connectivity/method concepts.
+The expressions below are the core Boolean queries without database field wrappers or year filters. OR combines synonyms within a concept; AND combines organism, life stage, and connectivity/method concepts.
 
 Query 1
 (drosophila OR "fruit fly" OR "fly") AND (larva* OR larval) AND (connectom* OR "wiring diagram" OR "synaptic connectivity")
@@ -21,18 +19,21 @@ Query 3
 drosophila AND (larva* OR larval) AND ("neural circuit*" OR "neuronal circuit*") AND (connectom* OR "electron microscop*")
 
 Scopus API mapping and run
-The generic Boolean expressions were mapped to the Scopus Search API using its TITLE-ABS-KEY field syntax and the original 2010-2026 publication-year filter. The query strings and result counts are listed in search_runs.csv. The current scopus search script keeps QUERIES as the field-neutral expressions and applies the Scopus wrapper and year filter at request time.
+The three field-neutral expressions were mapped to Scopus TITLE-ABS-KEY syntax and the original publication-year filter 2010-2026. Query 1 returned 142 results, Query 2 returned 378, and Query 3 returned 57. The 577 query results include overlap and produced 488 unique Scopus records. Exact query counts are recorded in search_runs.csv.
 
-Web of Science mapping and exports
-The query blocks were searched directly on the Web of Science website, as reported by the researcher. The downloaded savedrecs (7).xls, savedrecs (8).xls, and savedrecs (9).xls files are the WoS exports used in the merge. The downloaded records were filtered to 2015-2024 for the counts in source_counts.csv. The exact WoS interface settings and search date should be added from the original browser/search history if available.
+Web of Science search and exports
+The researcher searched the query blocks directly on the Web of Science website and used savedrecs (7).xls, savedrecs (8).xls, and savedrecs (9).xls. The exports contain 447 records in total. The exact WoS interface settings, query history, and search date were not retained and should be recovered or rerun before the review is complete.
+
+Identification, date filtering, and deduplication
+The supplied exports contained 935 records: 488 Scopus records and 447 WoS records. The agreed 2010-2026 date limit excluded 124 records, leaving 811 records within the period or with a year requiring verification. Deduplication removed 257 records by DOI, then normalized title and year when DOI was unavailable. One candidate pair (two records) with an exact title/year match but conflicting DOIs was retained for manual verification. The resulting title-and-abstract screening set contains 554 records. Aggregate counts are in prisma_identification_counts.csv.
 
 Abstract handling
-The Scopus Search API export contains incomplete abstract coverage. In the 2015-2024 Scopus export, 269 of 340 rows have an abstract and 71 do not. Missing abstracts were manually looked up where accessible, as reported by the researcher. The local database also shows an OpenAlex enrichment check for all 488 Scopus records, but per-record abstract provenance was not preserved; therefore the number of abstracts obtained manually cannot be separated from other enrichment in the merged files. The final merged screening set has 343 abstracts among 384 unique records.
+The 554-record screening set has 487 abstracts and 67 missing abstracts. Missing abstracts are not automatic exclusions. In the 2015-2024 Scopus subset, 269 of 340 source-export records have abstracts and 71 do not. Missing Scopus abstracts were manually looked up where accessible, as reported by the researcher. An OpenAlex enrichment check was also attempted for all 488 Scopus records, but per-record abstract provenance was not preserved; an exact manual-lookup count cannot be reported.
 
-Screening and deduplication
-The analysis script imports the three WoS exports and Scopus CSV, then checks duplicate-log identifiers against the source exports. Deduplication used DOI, then normalized title and year when DOI matching was unavailable. The 2015-2024 source, duplicate, and retained counts are in source_counts.csv.
+Screening
+Title-and-abstract screening was performed in ASReview LAB across the 554 deduplicated records: 32 are currently labeled relevant, 507 excluded with recorded reasons, and 15 unclear. The 32 relevant and 15 unclear labels require full-text eligibility assessment; they are not final study-inclusion decisions. The concise files asreview_included.csv, asreview_excluded.csv, and asreview_unclear.csv contain identifiers, titles, years, DOIs, labels, and available reasons, but no abstracts. Eligibility rules are in screening_criteria.csv.
 
-Title/abstract screening was performed in ASReview LAB across 554 deduplicated records: 32 marked relevant, 507 excluded with a recorded reason, and 15 unclear. In the 2015-2024 subset the labels are 21, 354, and 9 respectively. Full-text eligibility review is still pending. The concise files asreview_included.csv, asreview_excluded.csv, and asreview_unclear.csv contain identifiers, titles, years, DOIs, labels, and recorded rationales; abstracts are omitted. Eligibility rules are in screening_criteria.csv.
-
-Controlled vocabulary and limits
-Candidate terms should be checked against IEEE Taxonomy, ACM CCS, Scopus indexed terms, and WoS Keywords Plus before rerunning. The original broad term "fly" may retrieve unrelated records and should be evaluated during query refinement. Search dates, exact WoS query history, and per-record abstract provenance are not available in the retained exports.
+Bibliometric analysis and limits
+The initial bibliometric profile uses R 4.6.2 and bibliometrix 5.5.0. Yearly output is calculated for the full 554-record set; author, affiliation, source, citation, and keyword analyses are focused on the 32 records currently labeled relevant. The initial keyword thesaurus is keyword_thesaurus.csv.
+The broad search term "fly" may retrieve unrelated records and should be assessed during query refinement.
+Citation counts use the maximum of the Scopus and WoS values per record rather than adding overlapping database counts. Their capture date was not retained. The merged exports do not contain cited-reference lists, so co-citation and historiographic analyses are unavailable. Affiliation data are incomplete and do not provide consistent author-to-affiliation links; institutional collaboration claims are therefore omitted. The WoS search history, citation snapshots, and screening labels remain limitations.

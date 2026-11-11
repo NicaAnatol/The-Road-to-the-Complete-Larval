@@ -1,35 +1,87 @@
 # Larval Drosophila Connectome
 
-This repository documents a systematic review of how imaging and reconstruction advances made large-scale larval Drosophila connectomics possible.
+This repository documents a historical systematic review of how imaging and
+computational reconstruction enabled increasingly large-scale larval
+*Drosophila melanogaster* connectomics. Bibliometric results are preliminary:
+ASReview title-and-abstract labels have not yet been confirmed by full-text
+eligibility assessment.
 
-## Search and analysis
+## Search and screening
 
-The Scopus Search API was queried on 2026-11-04 with three Boolean searches. Together they returned 577 query results, including overlap, and added 488 unique records to the local Scopus database. The Web of Science (WoS) search was performed directly on its website; the three exports used were `savedrecs (7).xls`, `savedrecs (8).xls`, and `savedrecs (9).xls`. The exact WoS query and search date were not retained.
+The Scopus Search API was queried on 4 November 2026 using three Boolean
+searches. They returned 577 query results, including overlap, and 488 unique
+Scopus records. Web of Science (WoS) was searched manually on its website;
+the three exports used were `savedrecs (7).xls`, `savedrecs (8).xls`, and
+`savedrecs (9).xls`. The exact WoS query and search date were not retained.
 
-The quantitative results are a retrospective 2015-2024 subset of the available exports, not a new database search. The subset contains 568 source rows: 340 from Scopus and 228 from WoS. Deduplication removed 184 records, leaving 384 unique records. Source-level counts are in `source_counts.csv`; Scopus query counts are in `search_runs.csv`; Boolean expressions and limitations are in `search.txt`.
+Across both sources, 935 records were identified. Applying the 2010--2026
+publication-year limit excluded 124 records, leaving 811 records within the
+date range or awaiting year verification. Deduplication removed 257 records
+by DOI or normalized title and year. One candidate pair (two records) with
+conflicting DOIs was retained for manual checking. The resulting 554-record
+set has 487 abstracts; records without abstracts were not automatically
+excluded. Missing Scopus abstracts were manually checked where accessible;
+an OpenAlex enrichment was also attempted, but per-record abstract
+provenance was not preserved, so the exact manual-lookup count is unknown.
 
-Title/abstract screening in ASReview LAB has reached 554 deduplicated records: 32 marked relevant, 507 excluded with recorded reasons, and 15 unclear. Within the 2015-2024 quantitative subset, the corresponding labels are 21, 354, and 9; 343 of its 384 records have abstracts. These are screening decisions, not completed full-text eligibility checks. The review will trace electron-microscopy acquisition, image processing, neuron/synapse reconstruction, and validation milestones, then compare reported dataset scale and coverage where measures are available.
+Title-and-abstract screening in ASReview LAB currently labels 32 records as
+relevant, 507 as excluded with recorded reasons, and 15 as unclear. These are
+not final full-text eligibility decisions. The concise files
+`asreview_included.csv`, `asreview_excluded.csv`, and `asreview_unclear.csv`
+contain identifiers, titles, years, DOIs, labels, and available reasons, but
+no abstracts. The historical review will extract milestones in
+electron-microscopy acquisition, image processing, neuron and synapse
+reconstruction, and validation, then compare dataset scale and coverage where
+reported.
 
-The concise screening exports are `asreview_included.csv`, `asreview_excluded.csv`, and `asreview_unclear.csv`. They contain record identifiers, titles, years, DOIs, screening labels, and recorded reasons, but no abstracts. Every excluded record has an explanation in `asreview_excluded.csv`.
+`search.txt` documents the Boolean expressions and data limitations.
+`search_runs.csv` records the Scopus query results. `source_counts.csv` is a
+retrospective 2015--2024 subset of the exports (568 source rows, 184
+duplicates removed, and 384 unique records); it is not a new database search.
+The full identification, date-filtering, and deduplication counts are in
+`prisma_identification_counts.csv`.
 
-The Scopus export has abstracts for 269 of its 340 records in this period. Missing abstracts were manually looked up where accessible, as reported by the researcher. An OpenAlex enrichment check was also attempted for all 488 Scopus records, but per-record abstract provenance was not preserved; an exact manual-lookup count cannot be reported.
+## Preliminary bibliometric analysis
 
-## Reproduce the workflow
+`bibliometrics.R` uses R 4.6.2 and bibliometrix 5.5.0 to generate aggregate
+tables and figures from the local screening file. It profiles yearly output
+for all 554 records, and authors, reported affiliations, keywords, outlets,
+citations, keyword co-occurrence, and co-authorship for the 32 records
+currently labeled relevant. `keyword_thesaurus.csv` records the initial
+keyword normalization. Generated aggregate figures and tables are in
+`bibliometrics/`.
 
-Raw database exports and record-level screening files are intentionally excluded from Git. Keep these local files in the project folder:
+The citation indicator is the per-record maximum of Scopus and WoS counts,
+not their sum; citation counts are snapshots whose capture date was not
+retained. The merged exports do not include cited-reference lists, so
+co-citation and historiographic analyses are unavailable. Affiliation data
+are incomplete and not consistently linked to individual authors, so
+institutional collaboration claims are not made. These limitations, and the
+preliminary status of the screening labels, should be considered when
+interpreting the figures.
 
-- `review_scopus.csv`
-- `savedrecs (7).xls`, `savedrecs (8).xls`, and `savedrecs (9).xls`
-- `screening_decisions_with_reasons.csv`
-- `deduplication_log.csv`
+To reproduce the bibliometric outputs, keep
+`screening_decisions_with_reasons.csv` in the project folder, install
+bibliometrix from CRAN with `install.packages("bibliometrix")`, then run:
 
-Install dependencies with `python -m pip install -r requirements.txt`. To rerun Scopus, set `ELSEVIER_API_KEY` in the local environment and run `python scopus.py`. Query expressions are field-neutral in `QUERIES`; the script maps them to Scopus syntax and applies the 2010-2026 publication-year filter. Search WoS directly on its website and save the exports locally. Then run:
+```powershell
+Rscript.exe bibliometrics.R
+```
+
+The Python search and merge workflow additionally requires the files listed
+in `search.txt`; install its dependencies with
+`python -m pip install -r requirements.txt`. To rerun Scopus, set
+`ELSEVIER_API_KEY` locally and run `python scopus.py`. Search WoS directly
+on its website and save the exports locally. Then run:
 
 ```powershell
 python merge.py
 python stats.py
 ```
 
-`merge.py` imports the Scopus and WoS exports, deduplicates by DOI and then normalized title/year, and writes local screening and duplicate-review files. After title/abstract decisions and rationales are recorded, `stats.py` filters aggregate counts to 2015-2024, checks source, screening, and deduplication totals, and writes `counts.csv` and `source_counts.csv`. It also refreshes the three screening CSVs from the full decision file. Change the analysis period with `--start-year` and `--end-year`.
+`stats.py` refreshes the concise screening exports and the PRISMA screening
+status rows from the complete decision file. Its `counts.csv` and
+`source_counts.csv` outputs use the selected 2015--2024 retrospective period.
 
-`screening_criteria.csv` records the eligibility rules and decision rationale. The WoS query history/date and per-record abstract-source provenance were not retained; these limitations are reported in `search.txt` and Section 3 of `document.tex`. The project is a historical systematic review, not a planned connectome graph-ablation experiment. Raw records and abstracts are not included in this repository.
+Raw database exports, abstracts, the full screening file, and record-level
+citation output are intentionally kept local and are not committed.

@@ -1,244 +1,370 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{url}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{The Road to the Complete Larval Drosophila Connectome}
+\title{The Road to the Complete Larval \textit{Drosophila} Connectome: A Preliminary Bibliometric Review}
 
-\author{\IEEEauthorblockN{Anatol Nica}
-\IEEEauthorblockA{\textit{......}\\
-\textit{........}\\
-.....}
-}
+\author{\IEEEauthorblockN{Anatol Nica}}
 
 \maketitle
 
 \begin{abstract}
-..........................................................
+This work develops a historical systematic review of how imaging and computational methods enabled increasingly large-scale larval \textit{Drosophila melanogaster} connectomics. Scopus and Web of Science exports yielded 935 records; year filtering and deduplication produced 554 records for title-and-abstract screening. ASReview LAB currently labels 32 records as relevant, 507 as excluded, and 15 as unclear; these labels are preliminary and full-text eligibility assessment remains pending. A bibliometric profile of the available records shows a publication peak of 52 records in 2022 and identifies recurring contributors, keywords, outlets, and highly cited methodological milestones. The preliminary relevant set includes foundational studies of serial-section electron microscopy, volume alignment, quantitative reconstruction, and larval brain connectomes. Because the search history for Web of Science is incomplete and final eligibility decisions are unavailable, the findings describe the current dataset rather than a completed systematic review.
 \end{abstract}
 
 \begin{IEEEkeywords}
-......................
+Larval connectome, \textit{Drosophila melanogaster}, electron microscopy, systematic review, bibliometric analysis
 \end{IEEEkeywords}
 
 \section{Introduction}
 
-Understanding how the brain processes information remains an important
-challenge in neuroscience and computer science. Neurons communicate
-through complex networks of connections, and studying these connections
-can help researchers investigate how neural circuits support behavior.
-A connectome represents the connections between neurons within a nervous
-system or a defined part of it.
+A connectome describes neuronal connectivity in a nervous system or a
+defined region. Reconstructing one requires more than acquiring images:
+sections must be aligned, neurons and synapses traced, and the resulting
+annotations checked. The history of larval \textit{Drosophila} connectomics
+therefore provides a useful case study of how imaging and computational
+methods have changed the scale of neuroscience research. Early serial-section
+electron microscopy linked micro- and macro-anatomy in the larval brain
+\cite{cardona2010}; later work addressed volume reconstruction and
+quantitative proofreading \cite{saalfeld2012,schneidermizell2016}. The
+synaptic-resolution reconstruction of an insect brain represents a more
+recent scale of this development \cite{winding2023}.
 
-The fruit fly, Drosophila melanogaster, has become an important
-model organism for connectomics because of its relatively compact nervous
-system and the availability of advanced imaging and computational
-techniques. Its larval stage is particularly interesting because it
-provides opportunities to investigate neural development, sensory
-processing, and motor behavior.
+The review's goal is to trace the technical milestones that made these
+larger reconstructions possible, not to analyze a connectome graph or
+perform an ablation experiment. Bibliometric indicators are used to describe
+the current literature corpus and identify relevant sources for the next
+review stage. The preliminary research questions are:
+\begin{itemize}
+\item How has publication output on larval \textit{Drosophila} connectivity
+changed in the collected records?
+\item Which authors, reported affiliations, keywords, and publication
+outlets are most represented in the records currently marked relevant?
+\item Which highly cited studies provide candidate milestones in imaging,
+volume alignment, neuronal reconstruction, and connectome coverage?
+\end{itemize}
 
-Early studies focused on relatively small neuronal circuits and
-specific brain regions. As imaging technologies and reconstruction
-methods improved, researchers became able to identify larger numbers
-of neurons and their synaptic connections. These developments gradually
-expanded the scale of available datasets, making it possible to study
-neural networks in greater detail.
+\section{Methodology}
 
-An important step in this progress was the reconstruction of larval
-neuronal circuits containing approximately 3,000 neurons. Subsequent
-research expanded the available anatomical and connectivity information,
-providing increasingly comprehensive descriptions of neural systems.
-These advances also introduced new computational challenges, including
-the storage, processing, visualization, and interpretation of large
-connectivity datasets.
+\subsection{Search and Record Selection}
 
-This topic connects neuroscience with computer science through image
-processing, graph representation, data analysis, and computational
-reconstruction. Reviewing the development of larval Drosophila
-connectomics can therefore provide a clearer understanding of how
-technical progress has changed the scale and scope of neural circuit
-research.
+The search was organized around organism, life stage, and connectivity or
+method concepts. The three field-neutral Boolean query blocks combine
+\texttt{drosophila}, \texttt{fruit fly}, or \texttt{fly} with larval terms,
+then with connectome/wiring-diagram terms, electron-microscopy and
+reconstruction terms, or neural-circuit terms. The full expressions and
+known limitations are retained in the repository \cite{repo}. Scopus was
+queried through its Search API on 4 November 2026; the expressions were
+mapped to its title, abstract, and keyword fields and limited to publication
+years 2010--2026. The three queries returned 142, 378, and 57 results,
+respectively, or 577 results including overlap, and contributed 488 unique
+Scopus records.
 
-This work will 
-.................................................
+\begin{quote}
+\footnotesize\ttfamily\raggedright
+Q1: (drosophila OR "fruit fly" OR "fly") AND (larva* OR larval) AND
+(connectom* OR "wiring diagram" OR "synaptic connectivity")
+\par\medskip
+Q2: drosophila AND (larva* OR larval) AND ("electron microscopy" OR
+"serial section*" OR "volume EM" OR "neuron reconstruction" OR
+"circuit reconstruction")
+\par\medskip
+Q3: drosophila AND (larva* OR larval) AND ("neural circuit*" OR
+"neuronal circuit*") AND (connectom* OR "electron microscop*")
+\end{quote}
 
-\section{Main Problem}
+Web of Science (WoS) was searched directly on its website, as reported by
+the researcher. The three downloaded \texttt{savedrecs} exports contained
+447 records in total. The exact WoS query history and search date were not
+retained, so the search should be rerun and documented before the review is
+considered complete. In total, the supplied exports contained 935 records.
+The year filter excluded 124 records outside 2010--2026; 811 records
+remained within the range or required year verification. Deduplication used
+DOI, followed by normalized title and year when a DOI was unavailable.
+It removed 257 records and retained 554 records for screening. One
+title/year candidate pair (two records) with conflicting DOIs was kept for
+manual checking.
 
-Although connectomics has progressed considerably, the development
-of a comprehensive neural connectivity map has required overcoming
-several technical and methodological difficulties. The reconstruction
-of neurons from electron microscopy images is a demanding process
-because neuronal structures are densely packed, branches overlap,
-and synaptic connections can be difficult to identify accurately.
-
-One major problem is the scale of reconstruction. Early studies
-could investigate individual neurons, small circuits, or selected
-regions of the nervous system. Larger reconstructions require the
-identification and tracing of many more neurons, together with their
-synapses and associated anatomical information. Increasing the size
-of a dataset consequently increases the computational resources and
-validation effort required.
-
-Another challenge is the reliability of reconstructed connections.
-Errors in tracing neuronal branches or identifying synapses can affect
-the resulting connectivity graph. Automated methods can accelerate
-reconstruction, but they do not eliminate the need for quality control
-and correction. Differences in imaging techniques, annotation
-procedures, and dataset coverage can also make comparisons between
-studies difficult.
-
-A further issue concerns the meaning of completeness. A dataset may
-cover a particular brain region, a collection of neural circuits, or
-a much larger portion of the nervous system. These datasets should
-not automatically be treated as equivalent. Their coverage, resolution,
-biological stage, and available annotations must be considered when
-comparing progress across different studies.
-
-For larval Drosophila connectomics, an important question is how
-research progressed from relatively small reconstructions to more
-comprehensive neural connectivity datasets. Understanding this
-progress requires examining not only the number of reconstructed
-neurons but also the imaging technologies, reconstruction methods,
-and research objectives behind each milestone.
-
-The main problem addressed in this work is 
-
-..............................................
-
-\section{Possible Approach}
-
-This assignment begins with a quantitative literature review of the larval
-\textit{Drosophila melanogaster} connectome. The research idea is historical:
-to trace how advances in electron-microscopy imaging, image processing,
-neuron reconstruction, and validation made increasingly large-scale larval
-connectome projects possible. The systematic review will identify these
-milestones, compare their reported scale and coverage, and summarize the
-remaining barriers to a more complete connectome.
-
-\subsection{Scope and Objectives}
-
-The preliminary question is: \textit{How did imaging and reconstruction
-methods develop to make large-scale larval \textit{D. melanogaster}
-connectomics possible, and how did the scale and coverage of the resulting
-datasets change?} Quantitative measures include publication counts and,
-where reported in eligible studies, image volume, reconstructed neurons,
-synapses, and brain-region coverage. The reported 2015--2024 period is a
-retrospective filter of the existing 2010--2026 exports, not a new search.
-The Scopus API log is dated 4 November 2026. The exact date and query history
-for the direct Web of Science (WoS) website search were not retained.
-
-The target records are primary studies on larval \textit{D. melanogaster}
-connectivity and connectome datasets, including the imaging, image
-processing, reconstruction, synapse identification, and validation methods
-that enabled them. Reviews may inform background reading but will not count
-as primary studies. The current exports contain multiple publication types
-and no verified document-type filter, so this criterion still requires
-screening.
-
-\subsection{Search Terms and Query Design}
-
-The initial keyword matrix groups terms by concept. These terms were found
-in the existing Scopus searches and should be checked against the IEEE
-Taxonomy, ACM Computing Classification System, and database subject terms
-before the final search is run.
-
-\begin{table}[htbp]
-\caption{Initial keyword matrix}
-\label{tab:keywords}
-\centering
-\footnotesize
-\begin{tabular}{|p{0.20\linewidth}|p{0.70\linewidth}|}
-\hline
-\textbf{Concept} & \textbf{Candidate terms and variants} \\
-\hline
-Organism & \textit{Drosophila melanogaster}; drosophila; ``fruit fly'' \\
-\hline
-Life stage & larva; larvae; larval \\
-\hline
-Connectivity & connectome; connectomic; ``synaptic connectivity'';
-``wiring diagram''; ``neural circuit''; ``neuronal circuit'' \\
-\hline
-Data and methods & ``electron microscopy''; ``serial section'';
-``volume EM''; neuron reconstruction; circuit reconstruction \\
-\hline
-\end{tabular}
-\end{table}
-
-Within each concept block, related terms are combined with OR; concept
-blocks are combined with AND. Three query variants cover connectome terms,
-microscopy/reconstruction, and neural circuits. The field-neutral Boolean
-expressions are listed in \texttt{search.txt}; the Scopus script maps them
-to the database field syntax and applies the 2010--2026 publication-year
-filter. Scopus returned 142, 378, and 57 results for the three queries
-(577 query results including overlap), which produced 488 unique Scopus
-records. The researcher searched WoS directly on its website and exported
-the three \texttt{savedrecs} files. The exact WoS interface query and date
-remain undocumented, so the search should be rerun and logged before the
-review is considered systematic and complete.
-
-\subsection{Screening Progress}
-
-\begin{table}[htbp]
-\caption{Source records and deduplication (2015--2024)}
-\label{tab:source-counts}
-\centering
-\scriptsize
-\begin{tabular}{|p{0.40\linewidth}|r|r|r|}
-\hline
-\textbf{Database} & \textbf{Records} & \textbf{Duplicates} & \textbf{Retained} \\
-\hline
-Scopus & 340 & 1 & 339 \\
-Web of Science & 228 & 183 & 45 \\
-\hline
-\textbf{Total} & \textbf{568} & \textbf{184} & \textbf{384} \\
-\hline
-\end{tabular}
-\end{table}
-
-The 184 duplicates were matched by DOI. Abstracts are available for 343
-(89.3\%) of the 384 records in the 2015--2024 subset; the other 41 remain
-unresolved at the abstract stage.
-
-Title-and-abstract screening was conducted in ASReview LAB on the full
-deduplicated set of 554 records (2010--2026). At the current stage, 32
-records are marked relevant, 507 are excluded with a recorded reason, and
-15 remain unclear. The 2015--2024 subset accounts for 21 relevant, 354
-excluded, and 9 unclear records. These are screening labels, not completed
-full-text eligibility decisions. The repository provides concise record
-lists and exclusion rationales in \texttt{asreview\_included.csv},
-\texttt{asreview\_excluded.csv}, and \texttt{asreview\_unclear.csv}
-\cite{repo}. Historical extraction and synthesis are still in progress;
-raw database exports and abstracts are not included.
-
-\subsection{Proposed Connectome Research Pipeline}
-
-The project is a systematic review of the historical development of larval
-connectomics, not a planned graph-ablation experiment. After search and
-screening, the review will extract milestones in electron-microscopy
-acquisition, image alignment and segmentation, neuron and synapse
-reconstruction, and validation. Reported dataset scale and coverage will be
-compared quantitatively where the source studies provide comparable
-measures. The synthesis will explain how these technical advances enabled
-larger reconstructions and identify limitations that remain on the path
-toward a more complete connectome. The current screening counts are
-preliminary; historical extraction and synthesis remain to be completed.
+Title-and-abstract decisions were recorded in ASReview LAB
+\cite{asreview2021}. At the current
+stage, 32 records are labeled relevant, 507 excluded with recorded reasons,
+and 15 unclear. The 47 relevant or unclear records still require resolution
+at full text. Of the 554 records, 487 have abstracts; missing abstracts are
+not treated as automatic exclusions. Missing Scopus abstracts were manually
+checked where accessible, but an OpenAlex enrichment was also attempted and
+per-record abstract provenance was not preserved, so the exact number
+obtained by manual lookup cannot be isolated. Screening labels and
+rationales are available as concise record lists in the repository. The
+labels are not final study-inclusion decisions.
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=0.95\textwidth]{pipe.png}
-\caption{Systematic-review workflow for tracing historical technical
-advances that enabled larval connectome imaging and reconstruction.}
+\includegraphics[width=0.94\textwidth]{pipe.png}
+\caption{Review workflow. The preliminary search and bibliometric profile
+inform the next steps: full-text eligibility assessment, extraction of
+technical milestones, and historical synthesis.}
 \label{fig:workflow}
 \end{figure*}
+
+\subsection{Bibliometric Analysis and Synthesis Choices}
+
+The analysis uses R 4.6.2 and bibliometrix 5.5.0
+\cite{aria2017,donthu2021}. A combined Scopus/WoS table was analyzed rather
+than treating the records as a single-database export. Yearly publication
+output and stored citation counts were calculated for the 554-record corpus.
+Author, affiliation, source, and keyword frequencies, together with citation
+profiles and network figures, were calculated for the 32 records currently
+labeled relevant. Keyword variants were normalized with the small,
+documented thesaurus in the repository. Citation counts are represented by
+the per-record maximum of the Scopus and WoS values, not their sum; they are
+database snapshots and are not age-normalized.
+
+The selected synthesis views are productivity and citation profiles, a
+keyword co-occurrence map for conceptual structure, and a co-authorship map
+for social structure. The network figures display the most frequent terms
+or authors, use association-strength normalization, a force-directed
+layout, and Louvain clustering. They are exploratory summaries of the
+current 32-record set. Intellectual-structure analyses such as co-citation
+and historiography were not run because cited-reference lists are absent
+from the merged exports. Institutional collaboration maps were also omitted:
+affiliations are present for only 257 of 554 records, and the records do not
+provide consistent author-to-affiliation links.
+
+\section{Results}
+
+\subsection{Search Yield and Screening Status}
+
+Table~\ref{tab:screening} summarizes the currently verified counts. The
+554-record set spans publication years 2010--2026. The 2015--2024 figures in
+\texttt{source\_counts.csv} are a retrospective subset of these exports, not
+a separate search. Full-text eligibility and final study inclusion have
+not yet been completed.
+
+\begin{table}[htbp]
+\caption{Current identification and title/abstract screening counts}
+\label{tab:screening}
+\centering
+\footnotesize
+\begin{tabular}{|p{0.70\linewidth}|r|}
+\hline
+\textbf{Stage} & \textbf{Records} \\
+\hline
+Identified in supplied Scopus and WoS exports & 935 \\
+Outside the 2010--2026 year range & 124 \\
+After date filtering, before deduplication & 811 \\
+Duplicates removed & 257 \\
+Records in title/abstract screening set & 554 \\
+\hline
+Currently labeled relevant & 32 \\
+Currently excluded with recorded reasons & 507 \\
+Unclear and requiring resolution & 15 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Publication and Citation Profile}
+
+The collected corpus contains records from 2010 through 2026; 2026 is
+incomplete in the available export. Annual output is highest in 2022, with
+52 records, followed by 2025 with 49. The line in Fig.~\ref{fig:annual}
+shows the number of records currently labeled relevant in each year, on the
+right-hand axis. It is an ASReview screening status, not a count of final
+eligible studies.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.90\textwidth]{bibliometrics/annual_production.png}
+\caption{Publication output in the full screened corpus and records
+currently labeled relevant by year. The 2026 count is partial.}
+\label{fig:annual}
+\end{figure*}
+
+Across the 554 records, the sum of per-record maximum citation counts is
+15,082; the mean is 27.22 and the median is 14. These descriptive values
+should not be interpreted as comparable impact scores because citation
+coverage dates and database practices are not harmonized. Within the
+32-record relevant set, the highest stored counts are 352 for
+``The complete connectome of a learning and memory centre in an insect
+brain'' (2017), 333 for the 2010 serial-section electron-microscopy study,
+280 for ``The connectome of an insect brain'' (2023), 247 for the 2012
+elastic volume-reconstruction study, and 213 for the 2016 quantitative
+neuroanatomy paper. These studies provide candidate sources for examining
+imaging, alignment, proofreading, and the expansion of dataset coverage.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.90\textwidth]{bibliometrics/citations.png}
+\caption{Highest stored citation counts among records currently labeled
+relevant. Each bar uses the maximum value reported by Scopus or WoS for that
+record.}
+\label{fig:citations}
+\end{figure*}
+
+\subsection{Authors, Affiliations, and Sources}
+
+Albert Cardona is the most frequently represented author in the current
+relevant set, appearing in 12 records. Richard D. Fetter appears in six;
+Stephan Saalfeld, Casey M. Schneider-Mizell, and James W. Truman appear in
+five each. These are counts of records containing each author, not unique
+contributions or measures of influence.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.88\textwidth]{bibliometrics/authors.png}
+\caption{Authors most frequently represented among the 32 records currently
+labeled relevant.}
+\label{fig:authors}
+\end{figure*}
+
+Howard Hughes Medical Institute is the most frequently reported affiliation
+(11 records), followed by the University of Cambridge (8). Johns Hopkins
+University, MRC Laboratory of Molecular Biology, and the University of
+California System each occur in five records. Affiliation data are available
+for 29 of the 32 relevant records, and the labels are reported strings rather
+than fully harmonized institutions. The counts therefore describe metadata
+coverage and should not be read as a ranking of institutional productivity.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.88\textwidth]{bibliometrics/institutions.png}
+\caption{Most frequent reported affiliation strings among records currently
+labeled relevant.}
+\label{fig:institutions}
+\end{figure*}
+
+The current relevant records are distributed across 25 publication outlets.
+Eight are published in \textit{eLife}; each of the other 24 source titles
+occurs once. This concentration is a property of the preliminary selected
+set and may change after the unresolved records and full texts are assessed.
+
+\subsection{Keywords and Network Views}
+
+Keyword fields are available for 29 relevant records. After the initial
+normalization, ``circuit'' occurs in nine records; ``Drosophila
+melanogaster'' occurs in seven; ``connectome,'' ``nervous system,'' and
+``neuron'' occur in five each; and ``connectivity'' occurs in four. The
+terms suggest that the current set combines connectome-wide work with
+circuit-level studies. WoS Keywords Plus and Scopus keyword fields are
+combined in the source data, so these frequencies are descriptive rather
+than a strict author-keyword count.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.88\textwidth]{bibliometrics/keywords.png}
+\caption{Most frequent normalized keyword fields in the current relevant
+set.}
+\label{fig:keywords}
+\end{figure*}
+
+Fig.~\ref{fig:keyword-network} displays co-occurrences among the 18 most
+frequent normalized terms. The graph places general connectivity terms
+alongside nervous-system and circuit terms. Its clusters are algorithmic
+groupings of this small, preliminary dataset, not validated biological
+themes.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.84\textwidth]{bibliometrics/keyword_network.png}
+\caption{Exploratory keyword co-occurrence network for records currently
+labeled relevant. Node size represents keyword frequency; edge weights
+reflect co-occurrence.}
+\label{fig:keyword-network}
+\end{figure*}
+
+The co-authorship network in Fig.~\ref{fig:coauthors} is consistent with the
+frequency profile: Cardona and Fetter are prominent in the displayed
+network, while clusters reflect recurring author groups in the current
+records. The layout does not establish institutional collaboration or
+causal influence.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.84\textwidth]{bibliometrics/coauthorship_network.png}
+\caption{Exploratory co-authorship network among the current relevant
+records. Only the most frequent authors are displayed.}
+\label{fig:coauthors}
+\end{figure*}
+
+\section{Limitations and Next Steps}
+
+The results are limited by the undocumented WoS query history and search
+date, incomplete citation provenance, and preliminary title-and-abstract
+labels. Sixty-seven of the 554 records lack abstracts. Although all 32
+currently relevant records have abstracts, the 15 unclear records and the
+duplicate-candidate pair still require review. The citation figure uses
+the maximum reported source value because adding Scopus and WoS counts would
+double-count overlapping coverage; the capture date was not retained.
+Keyword and affiliation fields are incomplete and originate from different
+database conventions.
+
+The next review stage is to resolve the 15 unclear records and the one
+potential duplicate pair, retrieve and assess the full texts of the 32 relevant
+records and any newly eligible records, then extract study year, larval
+stage, imaging method, image volume, reconstructed neurons and synapses,
+region coverage, computational contribution, and validation evidence. Only
+after eligibility and extraction are complete can the review provide a
+defensible historical account of how technical advances changed the scale
+and coverage of larval connectomes.
+
+\section{Conclusion}
+
+The current 554-record corpus provides an initial quantitative map of
+research output and a preliminary set of 32 records for follow-up. The
+citation and keyword profiles point to candidate milestones in electron
+microscopy, volume reconstruction, quantitative proofreading, and
+connectome-scale mapping. These findings are a documentation-stage
+bibliometric profile, not a final systematic-review synthesis; full-text
+assessment and structured historical extraction remain necessary.
+
 \begin{thebibliography}{00}
-\bibitem{repo} A. Nica, ``The Road to the Complete Larval Drosophila Connectome,'' GitHub repository. [Online]. Available: \texttt{https://github.com/NicaAnatol/The-Road-to-the-Complete-Larval-Drosophila-Connectome}
+\bibitem{cardona2010}
+A. Cardona et al., ``An integrated micro- and macroarchitectural analysis
+of the Drosophila brain by computer-assisted serial section electron
+microscopy,'' \textit{PLoS Biology}, vol. 8, no. 10, e1000502, 2010,
+doi: 10.1371/journal.pbio.1000502.
+
+\bibitem{saalfeld2012}
+S. Saalfeld, R. Fetter, A. Cardona, and P. Tomancak, ``Elastic volume
+reconstruction from series of ultra-thin microscopy sections,''
+\textit{Nature Methods}, vol. 9, 2012, doi: 10.1038/nmeth.2072.
+
+\bibitem{schneidermizell2016}
+C. M. Schneider-Mizell et al., ``Quantitative neuroanatomy for connectomics
+in Drosophila,'' \textit{eLife}, vol. 5, e12059, 2016,
+doi: 10.7554/eLife.12059.
+
+\bibitem{winding2023}
+M. Winding et al., ``The connectome of an insect brain,''
+\textit{Science}, vol. 379, p. 995, 2023, doi: 10.1126/science.add9330.
+
+\bibitem{aria2017}
+M. Aria and C. Cuccurullo, ``bibliometrix: An R-tool for comprehensive
+science mapping analysis,'' \textit{Journal of Informetrics}, vol. 11,
+no. 4, pp. 959--975, 2017, doi: 10.1016/j.joi.2017.08.007.
+
+\bibitem{donthu2021}
+N. Donthu et al., ``How to conduct a bibliometric analysis: An overview
+and guidelines,'' \textit{Journal of Business Research}, vol. 133,
+pp. 285--296, 2021, doi: 10.1016/j.jbusres.2021.04.070.
+
+\bibitem{asreview2021}
+R. van de Schoot et al., ``An open source machine learning framework for
+efficient and transparent systematic reviews,'' \textit{Nature Machine
+Intelligence}, vol. 3, pp. 125--133, 2021,
+doi: 10.1038/s42256-020-00287-7.
+
+\bibitem{repo}
+A. Nica, ``The Road to the Complete Larval Drosophila Connectome,'' GitHub
+repository. [Online]. Available:
+\url{https://github.com/NicaAnatol/The-Road-to-the-Complete-Larval-Drosophila-Connectome}
 \end{thebibliography}
 \end{document}

@@ -15,7 +15,6 @@ ai_prescreen*.csv
 screening_decisions_with_reasons.csv
 deduplication_log.csv
 duplicate_candidates_for_manual_check.csv
-prisma_identification_counts.csv
 *.bib
 *.aux
 *.fdb_latexmk
@@ -23,3 +22,5 @@ prisma_identification_counts.csv
 *.log
 *.out
 *.pdf
+bibliometrics/summary.txt
+bibliometrics/included_citations.csv

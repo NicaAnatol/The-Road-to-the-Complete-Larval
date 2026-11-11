@@ -77,6 +77,58 @@ def export_screening(decisions, output_dir):
             )
 
 
+def update_prisma_screening(prisma_path, decisions):
+    rows = read_csv(prisma_path)
+    if not rows:
+        raise ValueError(f"PRISMA counts file is empty: {prisma_path}")
+
+    labels = Counter(row["decision"].strip().upper() for row in decisions)
+    total = len(decisions)
+    updates = {
+        "Records remaining for screening": (
+            total,
+            "Title-and-abstract decisions recorded; full-text eligibility assessment pending.",
+        ),
+        "Records screened": (
+            total,
+            "ASReview LAB title-and-abstract screening labels are preliminary and are not full-text eligibility decisions.",
+        ),
+        "Records excluded at title and abstract": (
+            labels["EXCLUDE"],
+            "ASReview label EXCLUDE with recorded reasons.",
+        ),
+        "Records currently marked relevant": (
+            labels["INCLUDE"],
+            "ASReview label INCLUDE; pending full-text eligibility assessment.",
+        ),
+        "Records with unclear title and abstract eligibility": (
+            labels["UNCLEAR"],
+            "ASReview label UNCLEAR; pending resolution.",
+        ),
+    }
+
+    existing = {row["stage"]: row for row in rows}
+    for stage, (count, note) in updates.items():
+        if stage in existing:
+            existing[stage]["records_n"] = count
+            existing[stage]["notes"] = note
+        else:
+            rows.append({
+                "stage": stage,
+                "source": "All sources",
+                "records_n": count,
+                "notes": note,
+            })
+
+    with prisma_path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=["stage", "source", "records_n", "notes"],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--scopus", type=Path, default=Path("review_scopus.csv"))
@@ -99,6 +151,11 @@ def main():
     )
     parser.add_argument(
         "--screening-output-dir", type=Path, default=Path(".")
+    )
+    parser.add_argument(
+        "--prisma-output",
+        type=Path,
+        default=Path("prisma_identification_counts.csv"),
     )
     args = parser.parse_args()
 
@@ -141,6 +198,7 @@ def main():
 
     all_decisions = read_csv(args.decisions)
     export_screening(all_decisions, args.screening_output_dir)
+    update_prisma_screening(args.prisma_output, all_decisions)
     records = [
         row for row in all_decisions
         if in_period(row.get("year", ""), args.start_year, args.end_year)

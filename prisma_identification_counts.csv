@@ -1,0 +1,19 @@
+﻿stage,source,records_n,notes
+Records identified,Scopus,488,Records in the supplied database export.
+Records identified,savedrecs (7).xls,116,Records in the supplied database export.
+Records identified,savedrecs (8).xls,288,Records in the supplied database export.
+Records identified,savedrecs (9).xls,43,Records in the supplied database export.
+Records identified,All sources,935,Before deduplication; counts imported from supplied exports.
+Records excluded before screening,Outside 2010-2026,124,Excluded by the agreed publication-year limit.
+Records remaining after date limit,All sources,811,Records within 2010-2026 or with no year available for manual verification.
+Duplicate records removed,All sources,257,Matched by DOI or exact normalized title/year when non-conflicting DOIs are present.
+Potential duplicates needing manual check,All sources,2,Exact title/year matches with conflicting DOIs were retained; see candidate log.
+Records remaining for screening,All sources,554,Title-and-abstract decisions recorded; full-text eligibility assessment pending.
+Records with abstract available,All sources,487,Abstract availability only; not an inclusion/exclusion decision.
+Records without abstract,All sources,67,Retain for title/full-text assessment; do not automatically exclude.
+Records screened,All sources,554,ASReview LAB title-and-abstract screening labels are preliminary and are not full-text eligibility decisions.
+Records excluded at title and abstract,All sources,507,ASReview label EXCLUDE with recorded reasons.
+Records currently marked relevant,All sources,32,ASReview label INCLUDE; pending full-text eligibility assessment.
+Records with unclear title and abstract eligibility,All sources,15,ASReview label UNCLEAR; pending resolution.
+Reports assessed for eligibility,All sources,,Pending full-text review.
+Studies included,All sources,,Pending eligibility decisions.
