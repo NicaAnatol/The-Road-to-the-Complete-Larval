@@ -1,0 +1,41 @@
+Review question
+How has research on the larval Drosophila melanogaster connectome developed, and which datasets, circuits, and computational methods are represented?
+
+Scope for the preliminary decade analysis
+Publication years: 2015-2024 inclusive
+Document types: primary journal articles and conference papers; reviews for background only
+Search date: not recorded in the supplied files; recover or record the date on rerun
+Boundary note: the source exports were originally searched for 2010-2026; the 2015-2024 results are a retrospective subset, not a fresh search
+
+Keyword matrix
+Organism: Drosophila melanogaster; drosophila; "fruit fly"
+Life stage: larva; larvae; larval
+Connectivity: connectome; connectomic; "synaptic connectivity"; "wiring diagram"; "neural circuit"; "neuronal circuit"
+Data and methods: "electron microscopy"; "serial section"; "volume EM"; neuron reconstruction; circuit reconstruction
+Controlled vocabulary check: map these candidate terms against IEEE Taxonomy, ACM CCS, Scopus indexed terms, and WoS Keywords Plus before rerunning
+Boolean logic: OR within concept blocks; AND between organism, life-stage, and connectivity/method blocks
+
+Scopus queries recorded in test.py
+TITLE-ABS-KEY((drosophila OR "fruit fly" OR "fly") AND (larva* OR larval) AND (connectom* OR "wiring diagram" OR "synaptic connectivity"))
+TITLE-ABS-KEY(drosophila AND (larva* OR larval) AND ("electron microscopy" OR "serial section*" OR "volume EM" OR "neuron reconstruction" OR "circuit reconstruction"))
+TITLE-ABS-KEY(drosophila AND (larva* OR larval) AND ("neural circuit*" OR "neuronal circuit*") AND (connectom* OR "electron microscop*"))
+Original Scopus year filter: PUBYEAR > 2009 AND PUBYEAR < 2027
+Recommended rerun filter: PUBYEAR > 2014 AND PUBYEAR < 2025
+Note: remove or justify the broad term "fly" during query refinement.
+
+WoS Core Collection query
+Exact original query not present in the supplied files. Proposed advanced-query translation for verification:
+TS=((drosophila OR "fruit fly" OR fly) AND (larva* OR larval) AND (connectom* OR "wiring diagram" OR "synaptic connectivity" OR "electron microscopy" OR "serial section*" OR "volume EM" OR "neuron reconstruction" OR "circuit reconstruction" OR "neural circuit*" OR "neuronal circuit*"))
+Apply the 2015-2024 publication-year boundary in WoS filters; record the exact interface filter and result count.
+
+Database rationale and export
+Scopus and Web of Science Core Collection are represented in the existing exports and provide multidisciplinary bibliographic and citation metadata.
+Existing export formats: Scopus CSV; WoS XLS; combined screening CSV.
+Search dates, exact WoS query, document-type filter, and per-query result counts were not retained and must be documented on rerun.
+
+Eligibility and screening
+Include primary studies of larval Drosophila melanogaster using connectomic, synaptic-connectivity, or neural-circuit reconstruction evidence.
+Exclude other species or life stages, non-primary publications from the primary-study synthesis, and studies without relevant connectivity evidence.
+Retain records with missing abstracts for manual assessment.
+Deduplicate by DOI, then normalized title and publication year; manually resolve conflicting matches.
+Screen titles and abstracts, then assess potentially eligible full texts and record exclusion reasons.

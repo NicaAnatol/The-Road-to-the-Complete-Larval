@@ -1,0 +1,276 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{The Road to the Complete Larval Drosophila Connectome}
+
+\author{\IEEEauthorblockN{Anatol Nica}
+\IEEEauthorblockA{\textit{......}\\
+\textit{........}\\
+.....}
+}
+
+\maketitle
+
+\begin{abstract}
+..........................................................
+\end{abstract}
+
+\begin{IEEEkeywords}
+......................
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Understanding how the brain processes information remains an important
+challenge in neuroscience and computer science. Neurons communicate
+through complex networks of connections, and studying these connections
+can help researchers investigate how neural circuits support behavior.
+A connectome represents the connections between neurons within a nervous
+system or a defined part of it.
+
+The fruit fly, Drosophila melanogaster, has become an important
+model organism for connectomics because of its relatively compact nervous
+system and the availability of advanced imaging and computational
+techniques. Its larval stage is particularly interesting because it
+provides opportunities to investigate neural development, sensory
+processing, and motor behavior.
+
+Early studies focused on relatively small neuronal circuits and
+specific brain regions. As imaging technologies and reconstruction
+methods improved, researchers became able to identify larger numbers
+of neurons and their synaptic connections. These developments gradually
+expanded the scale of available datasets, making it possible to study
+neural networks in greater detail.
+
+An important step in this progress was the reconstruction of larval
+neuronal circuits containing approximately 3,000 neurons. Subsequent
+research expanded the available anatomical and connectivity information,
+providing increasingly comprehensive descriptions of neural systems.
+These advances also introduced new computational challenges, including
+the storage, processing, visualization, and interpretation of large
+connectivity datasets.
+
+This topic connects neuroscience with computer science through image
+processing, graph representation, data analysis, and computational
+reconstruction. Reviewing the development of larval Drosophila
+connectomics can therefore provide a clearer understanding of how
+technical progress has changed the scale and scope of neural circuit
+research.
+
+This work will 
+.................................................
+
+\section{Main Problem}
+
+Although connectomics has progressed considerably, the development
+of a comprehensive neural connectivity map has required overcoming
+several technical and methodological difficulties. The reconstruction
+of neurons from electron microscopy images is a demanding process
+because neuronal structures are densely packed, branches overlap,
+and synaptic connections can be difficult to identify accurately.
+
+One major problem is the scale of reconstruction. Early studies
+could investigate individual neurons, small circuits, or selected
+regions of the nervous system. Larger reconstructions require the
+identification and tracing of many more neurons, together with their
+synapses and associated anatomical information. Increasing the size
+of a dataset consequently increases the computational resources and
+validation effort required.
+
+Another challenge is the reliability of reconstructed connections.
+Errors in tracing neuronal branches or identifying synapses can affect
+the resulting connectivity graph. Automated methods can accelerate
+reconstruction, but they do not eliminate the need for quality control
+and correction. Differences in imaging techniques, annotation
+procedures, and dataset coverage can also make comparisons between
+studies difficult.
+
+A further issue concerns the meaning of completeness. A dataset may
+cover a particular brain region, a collection of neural circuits, or
+a much larger portion of the nervous system. These datasets should
+not automatically be treated as equivalent. Their coverage, resolution,
+biological stage, and available annotations must be considered when
+comparing progress across different studies.
+
+For larval Drosophila connectomics, an important question is how
+research progressed from relatively small reconstructions to more
+comprehensive neural connectivity datasets. Understanding this
+progress requires examining not only the number of reconstructed
+neurons but also the imaging technologies, reconstruction methods,
+and research objectives behind each milestone.
+
+The main problem addressed in this work is 
+
+..............................................
+
+\section{Possible Approach}
+
+The current assignment is a preliminary bibliographic investigation, not
+the implementation of a connectome analysis. The review will identify
+research directions, datasets, and computational methods related to the
+larval \textit{Drosophila melanogaster} connectome. The longer-term research
+idea is to use the literature to select a connectome, analyze its graph,
+perform in-silico ablation, and evaluate functional consequences.
+
+\subsection{Scope and Objectives}
+
+The preliminary quantitative question is: \textit{How has research on the
+larval \textit{D. melanogaster} connectome developed, and which datasets,
+circuits, and computational methods are represented?} The investigation will
+describe publication counts by year, publication type, citation counts, and
+keyword frequency. The planned bibliographic window is 2015--2024, a
+10-year period that omits both the current year and the preceding year.
+The available exports were originally collected for 2010--2026; therefore,
+the reported decade figures below are a retrospective filter of those
+exports, not a new database search. The exact search date was not recorded
+and must be recovered or documented when the search is repeated.
+
+The target records are journal articles and conference papers reporting
+primary research on larval \textit{D. melanogaster} connectivity, connectome
+reconstruction, or neural-circuit analysis. Reviews may inform background
+reading but will not count as primary studies. The current exports contain
+multiple publication types and no verified document-type filter, so this
+criterion still requires screening.
+
+\subsection{Search Terms and Query Design}
+
+The initial keyword matrix groups terms by concept. These terms were found
+in the existing Scopus searches and should be checked against the IEEE
+Taxonomy, ACM Computing Classification System, and database subject terms
+before the final search is run.
+
+\begin{table}[htbp]
+\caption{Initial keyword matrix}
+\label{tab:keywords}
+\centering
+\footnotesize
+\begin{tabular}{|p{0.20\linewidth}|p{0.70\linewidth}|}
+\hline
+\textbf{Concept} & \textbf{Candidate terms and variants} \\
+\hline
+Organism & \textit{Drosophila melanogaster}; drosophila; ``fruit fly'' \\
+\hline
+Life stage & larva; larvae; larval \\
+\hline
+Connectivity & connectome; connectomic; ``synaptic connectivity'';
+``wiring diagram''; ``neural circuit''; ``neuronal circuit'' \\
+\hline
+Data and methods & ``electron microscopy''; ``serial section'';
+``volume EM''; neuron reconstruction; circuit reconstruction \\
+\hline
+\end{tabular}
+\end{table}
+
+Within each concept block, related terms are combined with OR; the organism,
+life-stage, and connectivity/method blocks are combined with AND. The
+recorded Scopus searches used three advanced-query variants: connectome and
+connectivity terms; microscopy and reconstruction terms; and neural-circuit
+terms. Their exact search strings are in \texttt{search.txt}. The original
+script applied the 2010--2026 year filter. For the planned 2015--2024
+replication, that filter must be changed to exclude years before 2015 and
+after 2024. The generic term ``fly'' in one original query may retrieve
+irrelevant records and should be removed or justified during iterative
+refinement.
+
+Scopus and the Web of Science Core Collection are the databases represented
+in the supplied files. They provide multidisciplinary bibliographic records
+and citation metadata relevant to a topic spanning neuroscience and
+computational methods. Scopus records were exported as CSV and WoS records
+as XLS files; records were combined into CSV for screening. The exact WoS
+query, search date, and database filters are not present in the supplied
+files. A translated WoS query and the documentation checklist are provided
+in \texttt{search.txt}; the translation must be verified in the advanced
+search interface before being reported as executed.
+
+\subsection{Screening and Preliminary Results}
+
+The Scopus and WoS exports contain 568 records dated 2015--2024: 340 from
+Scopus and 228 across the three WoS exports. Deduplication removed 184
+records, all matched by DOI in this date range, leaving 384 unique records
+for screening. The screening file contains 343 records with an abstract
+(89.3\%) and 41 without one (10.7\%). Missing abstracts are retained for
+manual review rather than automatically excluded.
+
+\begin{table}[htbp]
+\caption{Preliminary ten-year screening counts (2015--2024)}
+\label{tab:screening-counts}
+\centering
+\footnotesize
+\begin{tabular}{|l|r|r|}
+\hline
+\textbf{Stage or label} & \textbf{Records} & \textbf{Percent} \\
+\hline
+Scopus export & 340 & -- \\
+Web of Science exports & 228 & -- \\
+Records before deduplication & 568 & 100.0\% \\
+Duplicate records removed & 184 & 32.4\% \\
+Unique records screened & 384 & 67.6\% \\
+\hline
+Possible inclusion (current label) & 21 & 5.5\% \\
+Exclusion (current label) & 354 & 92.2\% \\
+Unclear (current label) & 9 & 2.3\% \\
+\hline
+Abstract available & 343 & 89.3\% \\
+Abstract missing & 41 & 10.7\% \\
+\hline
+\end{tabular}
+\end{table}
+
+Annual record counts were 31, 32, 39, 43, 39, 39, 39, 52, 34, and 36 for
+2015 through 2024, respectively. The largest annual count was 52 in 2022
+(13.5\% of the 384 records), followed by 43 in 2018 (11.2\%). Scopus citation
+metadata are available for 339 records: these records have 10,213 citations
+in total (mean 30.1; median 18), an h-index of 52, and 226 records with at
+least 10 citations. These citation figures are a preliminary export snapshot;
+its retrieval date was not recorded. Author/index keywords are present for
+178 records (46.4\%). After case-folding but before synonym normalization,
+``Drosophila'' occurs 59 times and ``expression'' 24 times; variants such as
+``Drosophila melanogaster'' and ``Drosophila-melanogaster'' must be normalized
+before interpreting keyword trends.
+
+Current INCLUDE/EXCLUDE/UNCLEAR labels are preliminary screening labels, not
+independently verified eligibility decisions. The 21 possible inclusions and
+9 unclear records require manual/full-text assessment. The database-level
+counts reconcile for this retrospective decade subset, but the original
+search dates and the exact WoS query still need to be documented. Aggregate
+results are in \texttt{counts.csv}; \texttt{stats.py} regenerates them from
+the local exports. Raw bibliographic exports are not included in the shared
+project.
+
+\subsection{Proposed Connectome Research Pipeline}
+
+The diagram separates the longer-term research idea from the bibliographic
+task currently being completed. The literature review will identify and
+compare candidate datasets and methods. A later connectome analysis may
+represent connectivity as a graph, remove selected nodes or edges in silico,
+and compare predefined circuit or task-related measures before and after
+ablation. No connectome analysis, ablation, or functional evaluation has yet
+been performed.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\linewidth]{pipe.png}
+\caption{Proposed research pipeline: Literature Review, Connectome Analysis,
+Ablation, and Functional Evaluation. The last three steps are future work.}
+\label{fig:workflow}
+\end{figure}
+\begin{thebibliography}{00}
+\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
+\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
+\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
+\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
+\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
+\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
+\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+\end{thebibliography}
+\end{document}

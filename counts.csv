@@ -1,0 +1,54 @@
+group,category,value,denominator,percentage
+Records identified,Scopus,340,,
+Records identified,savedrecs (7).xls,79,,
+Records identified,savedrecs (8).xls,116,,
+Records identified,savedrecs (9).xls,33,,
+Records identified,All sources,568,,
+Deduplication,Duplicates removed,184,568,32.4
+Screening,Unique records,384,568,67.6
+Screening decision,INCLUDE,21,384,5.5
+Screening decision,EXCLUDE,354,384,92.2
+Screening decision,UNCLEAR,9,384,2.3
+Abstract,Available,343,384,89.3
+Abstract,Missing,41,384,10.7
+Publication year,2015,31,384,8.1
+Publication year,2016,32,384,8.3
+Publication year,2017,39,384,10.2
+Publication year,2018,43,384,11.2
+Publication year,2019,39,384,10.2
+Publication year,2020,39,384,10.2
+Publication year,2021,39,384,10.2
+Publication year,2022,52,384,13.5
+Publication year,2023,34,384,8.9
+Publication year,2024,36,384,9.4
+Document type,Article,343,384,
+Document type,Article; Proceedings Paper,1,384,
+Document type,Article; Retracted Publication,1,384,
+Document type,Book Chapter,4,384,
+Document type,Conference Paper,1,384,
+Document type,Editorial,1,384,
+Document type,Editorial Material,4,384,
+Document type,Erratum,1,384,
+Document type,Letter,1,384,
+Document type,Note,2,384,
+Document type,Proceedings Paper,2,384,
+Document type,Review,22,384,
+Document type,Short Survey,1,384,
+Scopus citations,Records with citation data,339,384,
+Scopus citations,Total citations,10213,,
+Scopus citations,Mean citations per record with data,30.1,,
+Scopus citations,Median citations per record with data,18,,
+Scopus citations,h-index of records with citation data,52,,
+Scopus citations,Records cited at least 10 times,226,339,
+Keywords,Records with keywords,178,384,
+Keyword frequency,drosophila,59,384,
+Keyword frequency,expression,24,384,
+Keyword frequency,melanogaster,20,384,
+Keyword frequency,neurons,20,384,
+Keyword frequency,organization,17,384,
+Keyword frequency,nervous-system,16,384,
+Keyword frequency,drosophila melanogaster,15,384,
+Keyword frequency,ultrastructure,15,384,
+Keyword frequency,circuit,15,384,
+Keyword frequency,drosophila-melanogaster,15,384,
+Duplicate match,same DOI,184,184,
