@@ -1,0 +1,15 @@
+﻿stage,source,records,notes
+identified,Scopus,488,Rows in the supplied database export before year filtering.
+identified,savedrecs (7).xls,116,Rows in the supplied database export before year filtering.
+identified,savedrecs (8).xls,288,Rows in the supplied database export before year filtering.
+identified,savedrecs (9).xls,43,Rows in the supplied database export before year filtering.
+excluded_outside_year_range,savedrecs (7).xls,9,Publication year outside 2010-2026.
+excluded_outside_year_range,savedrecs (8).xls,114,Publication year outside 2010-2026.
+excluded_outside_year_range,savedrecs (9).xls,1,Publication year outside 2010-2026.
+retained_after_year_filter,Scopus,488,Known years within range; records with missing year retained for verification.
+retained_after_year_filter,savedrecs (7).xls,107,Known years within range; records with missing year retained for verification.
+retained_after_year_filter,savedrecs (8).xls,174,Known years within range; records with missing year retained for verification.
+retained_after_year_filter,savedrecs (9).xls,42,Known years within range; records with missing year retained for verification.
+removed_as_duplicates,All sources,257,Matched by DOI or normalized title and year.
+retained_after_deduplication,All sources,554,Includes possible duplicate records retained for manual checking.
+possible_duplicate_manual_check,All sources,2,"Same normalized title and year with conflicting DOIs; retained, not merged."

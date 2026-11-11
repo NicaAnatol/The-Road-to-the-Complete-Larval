@@ -34,6 +34,15 @@ electron-microscopy acquisition, image processing, neuron and synapse
 reconstruction, and validation, then compare dataset scale and coverage where
 reported.
 
+## Extracted source metadata
+
+The `data/` folder contains metadata-only records from Scopus and Web of
+Science after the publication-year filter, the deduplicated dataset, an
+out-of-range record log, a duplicate log, and counts for each filtering
+stage. Abstracts, affiliations and addresses, emails, cited-reference text,
+and full text are not included. See `data/README.md` for details and
+regeneration instructions.
+
 `search.txt` documents the Boolean expressions and data limitations.
 `search_runs.csv` records the Scopus query results. `source_counts.csv` is a
 retrospective 2015--2024 subset of the exports (568 source rows, 184
@@ -84,4 +93,6 @@ status rows from the complete decision file. Its `counts.csv` and
 `source_counts.csv` outputs use the selected 2015--2024 retrospective period.
 
 Raw database exports, abstracts, the full screening file, and record-level
-citation output are intentionally kept local and are not committed.
+citation output are intentionally kept local and are not committed. The
+derived metadata files in `data/` omit abstracts, affiliations and addresses,
+emails, and cited-reference text.
