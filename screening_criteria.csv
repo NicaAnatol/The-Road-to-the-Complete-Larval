@@ -1,6 +1,6 @@
 stage,decision,rule,notes
-Title and abstract,Include,Original research about the larval stage of Drosophila melanogaster with direct evidence about neural connectivity or connectome datasets.,Mixed-stage studies are eligible only if larval findings can be identified separately.
-Title and abstract,Include,Original research developing or applying computational methods to larval Drosophila connectomics.,Examples include EM image processing; neuron or synapse segmentation; tracing; reconstruction; proofreading; connectome data infrastructure; graph or network analysis of larval connectivity.
+Title and abstract,Include,Original research about larval Drosophila melanogaster connectivity or connectome datasets.,Mixed-stage studies are eligible only if larval findings can be identified separately.
+Title and abstract,Include,Original research on imaging or computational methods that enabled larval Drosophila connectome acquisition and reconstruction.,Examples include electron-microscopy acquisition; image alignment; neuron or synapse segmentation; tracing; reconstruction; proofreading; validation; and connectome data infrastructure.
 Title and abstract,Exclude,Not Drosophila melanogaster or not the larval stage.,Do not exclude mixed-stage records if larval data may be separable.
 Title and abstract,Exclude,No neural connectivity or connectome contribution relevant to the research question.,Behavioral or physiological findings alone are insufficient unless directly linked to larval circuit/connectivity data.
 Title and abstract,Exclude,Review, editorial, commentary, or other non-primary publication from the primary-study synthesis.,Keep potentially useful reviews separately for background and reference-list searching; do not count them as primary studies.

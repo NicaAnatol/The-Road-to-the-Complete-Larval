@@ -116,27 +116,32 @@ The main problem addressed in this work is
 \section{Possible Approach}
 
 This assignment begins with a quantitative literature review of the larval
-\textit{Drosophila melanogaster} connectome. The longer-term research idea
-is to select a suitable connectome dataset, analyze its graph, perform
-in-silico ablation, and evaluate functional consequences if a validated
-functional measure is available.
+\textit{Drosophila melanogaster} connectome. The research idea is historical:
+to trace how advances in electron-microscopy imaging, image processing,
+neuron reconstruction, and validation made increasingly large-scale larval
+connectome projects possible. The systematic review will identify these
+milestones, compare their reported scale and coverage, and summarize the
+remaining barriers to a more complete connectome.
 
 \subsection{Scope and Objectives}
 
-The preliminary quantitative question is: \textit{How has research on the larval \textit{D. melanogaster} connectome
-developed, and which datasets and computational methods are represented?}
-Initial quantitative measures are publication counts, citation counts,
-keywords, and screening decisions. The reported 2015--2024 period is a
+The preliminary question is: \textit{How did imaging and reconstruction
+methods develop to make large-scale larval \textit{D. melanogaster}
+connectomics possible, and how did the scale and coverage of the resulting
+datasets change?} Quantitative measures include publication counts and,
+where reported in eligible studies, image volume, reconstructed neurons,
+synapses, and brain-region coverage. The reported 2015--2024 period is a
 retrospective filter of the existing 2010--2026 exports, not a new search.
 The Scopus API log is dated 4 November 2026. The exact date and query history
 for the direct Web of Science (WoS) website search were not retained.
 
-The target records are journal articles and conference papers reporting
-primary research on larval \textit{D. melanogaster} connectivity, connectome
-reconstruction, or neural-circuit analysis. Reviews may inform background
-reading but will not count as primary studies. The current exports contain
-multiple publication types and no verified document-type filter, so this
-criterion still requires screening.
+The target records are primary studies on larval \textit{D. melanogaster}
+connectivity and connectome datasets, including the imaging, image
+processing, reconstruction, synapse identification, and validation methods
+that enabled them. Reviews may inform background reading but will not count
+as primary studies. The current exports contain multiple publication types
+and no verified document-type filter, so this criterion still requires
+screening.
 
 \subsection{Search Terms and Query Design}
 
@@ -245,20 +250,22 @@ query logs, criteria, and scripts are available in the project repository
 
 \subsection{Proposed Connectome Research Pipeline}
 
-The diagram separates the longer-term research idea from the bibliographic
-task currently being completed. The literature review will identify and
-compare candidate datasets and methods. A later connectome analysis may
-represent connectivity as a graph, remove selected nodes or edges in silico,
-and compare predefined circuit or task-related measures before and after
-ablation. No connectome analysis, ablation, or functional evaluation has yet
-been performed.
+The project is a systematic review of the historical development of larval
+connectomics, not a planned graph-ablation experiment. After search and
+screening, the review will extract milestones in electron-microscopy
+acquisition, image alignment and segmentation, neuron and synapse
+reconstruction, and validation. Reported dataset scale and coverage will be
+compared quantitatively where the source studies provide comparable
+measures. The synthesis will explain how these technical advances enabled
+larger reconstructions and identify limitations that remain on the path
+toward a more complete connectome. The current screening counts are
+preliminary; historical extraction and synthesis remain to be completed.
 
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=0.95\textwidth]{pipe.png}
-\caption{Numbered project workflow. The literature-review counts are
-preliminary; connectome analysis, ablation, and functional evaluation are
-future work.}
+\caption{Systematic-review workflow for tracing historical technical
+advances that enabled larval connectome imaging and reconstruction.}
 \label{fig:workflow}
 \end{figure*}
 \begin{thebibliography}{00}
