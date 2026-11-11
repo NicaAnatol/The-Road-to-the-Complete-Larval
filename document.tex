@@ -184,7 +184,7 @@ the three \texttt{savedrecs} files. The exact WoS interface query and date
 remain undocumented, so the search should be rerun and logged before the
 review is considered systematic and complete.
 
-\subsection{Screening and Preliminary Results}
+\subsection{Screening Progress}
 
 \begin{table}[htbp]
 \caption{Source records and deduplication (2015--2024)}
@@ -193,60 +193,30 @@ review is considered systematic and complete.
 \scriptsize
 \begin{tabular}{|p{0.40\linewidth}|r|r|r|}
 \hline
-\textbf{Source export} & \textbf{Records} & \textbf{Duplicates} & \textbf{Retained} \\
+\textbf{Database} & \textbf{Records} & \textbf{Duplicates} & \textbf{Retained} \\
 \hline
-Scopus API & 340 & 1 & 339 \\
-WoS \texttt{savedrecs (7).xls} & 79 & 69 & 10 \\
-WoS \texttt{savedrecs (8).xls} & 116 & 81 & 35 \\
-WoS \texttt{savedrecs (9).xls} & 33 & 33 & 0 \\
+Scopus & 340 & 1 & 339 \\
+Web of Science & 228 & 183 & 45 \\
 \hline
 \textbf{Total} & \textbf{568} & \textbf{184} & \textbf{384} \\
 \hline
 \end{tabular}
 \end{table}
 
-The 184 duplicates were matched by DOI. The Scopus export has abstracts for
-269 of its 340 records in this period. Missing abstracts were looked up
-manually where accessible, as reported by the researcher; per-record source
-provenance was not retained. The final merged screening set has 343
-abstracts (89.3\%) and 41 missing abstracts (10.7\%).
+The 184 duplicates were matched by DOI. Abstracts are available for 343
+(89.3\%) of the 384 records in the 2015--2024 subset; the other 41 remain
+unresolved at the abstract stage.
 
-\begin{table}[htbp]
-\caption{Preliminary screening counts (2015--2024)}
-\label{tab:screening-counts}
-\centering
-\footnotesize
-\begin{tabular}{|l|r|r|}
-\hline
-\textbf{Stage or label} & \textbf{Records} & \textbf{Percent} \\
-\hline
-Possible inclusion (preliminary label) & 21 & 5.5\% \\
-Exclude (preliminary label) & 354 & 92.2\% \\
-Unclear (preliminary label) & 9 & 2.3\% \\
-\hline
-Abstract available & 343 & 89.3\% \\
-Abstract missing & 41 & 10.7\% \\
-\hline
-\end{tabular}
-\end{table}
-
-Annual record counts were 31, 32, 39, 43, 39, 39, 39, 52, 34, and 36 for
-2015 through 2024, respectively. The largest annual count was 52 in 2022
-(13.5\% of the 384 records), followed by 43 in 2018 (11.2\%). Scopus citation
-metadata are available for 339 records: these records have 10,213 citations
-in total (mean 30.1; median 18), an h-index of 52, and 226 records with at
-least 10 citations. These citation figures are a preliminary export snapshot;
-its retrieval date was not recorded. Author/index keywords are present for
-178 records (46.4\%). After case-folding but before synonym normalization,
-``Drosophila'' occurs 59 times and ``expression'' 24 times; variants such as
-``Drosophila melanogaster'' and ``Drosophila-melanogaster'' must be normalized
-before interpreting keyword trends.
-
-The INCLUDE/EXCLUDE/UNCLEAR decisions are preliminary. The 21 possible
-inclusions and 9 unclear records require full-text assessment. The source,
-deduplication, and screening totals reconcile. Aggregate extraction outputs,
-query logs, criteria, and scripts are available in the project repository
-\cite{repo}; raw database exports and record-level abstracts are excluded.
+Title-and-abstract screening was conducted in ASReview LAB on the full
+deduplicated set of 554 records (2010--2026). At the current stage, 32
+records are marked relevant, 507 are excluded with a recorded reason, and
+15 remain unclear. The 2015--2024 subset accounts for 21 relevant, 354
+excluded, and 9 unclear records. These are screening labels, not completed
+full-text eligibility decisions. The repository provides concise record
+lists and exclusion rationales in \texttt{asreview\_included.csv},
+\texttt{asreview\_excluded.csv}, and \texttt{asreview\_unclear.csv}
+\cite{repo}. Historical extraction and synthesis are still in progress;
+raw database exports and abstracts are not included.
 
 \subsection{Proposed Connectome Research Pipeline}
 

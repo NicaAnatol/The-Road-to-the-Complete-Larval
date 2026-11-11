@@ -8,6 +8,9 @@ idea_draft_connectomics.*
 *_scopus.csv
 articole_*.csv
 asreview_*.csv
+!asreview_included.csv
+!asreview_excluded.csv
+!asreview_unclear.csv
 ai_prescreen*.csv
 screening_decisions_with_reasons.csv
 deduplication_log.csv

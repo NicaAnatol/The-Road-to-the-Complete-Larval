@@ -30,6 +30,53 @@ def h_index(citations):
     )
 
 
+def export_screening(decisions, output_dir):
+    fields = [
+        "record_id",
+        "title",
+        "year",
+        "doi",
+        "decision",
+        "decision_reason",
+    ]
+    output_dir.mkdir(parents=True, exist_ok=True)
+    labels = {
+        "INCLUDE": "asreview_included.csv",
+        "EXCLUDE": "asreview_excluded.csv",
+        "UNCLEAR": "asreview_unclear.csv",
+    }
+    unexpected = {
+        row.get("decision", "").strip().upper()
+        for row in decisions
+    } - set(labels)
+    if unexpected:
+        raise ValueError(f"Unexpected screening labels: {unexpected}")
+    without_reasons = [
+        row.get("record_id", "")
+        for row in decisions
+        if row.get("decision", "").strip().upper() == "EXCLUDE"
+        and not row.get("decision_reason", "").strip()
+    ]
+    if without_reasons:
+        raise ValueError(
+            "Excluded records are missing decision reasons: "
+            f"{without_reasons[:5]}"
+        )
+    for label, filename in labels.items():
+        path = output_dir / filename
+        with path.open("w", encoding="utf-8-sig", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(
+                {
+                    field: row.get(field, "").strip()
+                    for field in fields
+                }
+                for row in decisions
+                if row.get("decision", "").strip().upper() == label
+            )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--scopus", type=Path, default=Path("review_scopus.csv"))
@@ -49,6 +96,9 @@ def main():
     parser.add_argument("--output", type=Path, default=Path("counts.csv"))
     parser.add_argument(
         "--source-output", type=Path, default=Path("source_counts.csv")
+    )
+    parser.add_argument(
+        "--screening-output-dir", type=Path, default=Path(".")
     )
     args = parser.parse_args()
 
@@ -89,9 +139,10 @@ def main():
                     str(row.get("Abstract", "")).strip()
                 )
 
-    decisions = read_csv(args.decisions)
+    all_decisions = read_csv(args.decisions)
+    export_screening(all_decisions, args.screening_output_dir)
     records = [
-        row for row in decisions
+        row for row in all_decisions
         if in_period(row.get("year", ""), args.start_year, args.end_year)
     ]
     if not records:
@@ -285,6 +336,10 @@ def main():
     )
     print(f"Wrote {len(rows)} aggregate rows to {args.output}")
     print(f"Wrote source-level counts to {args.source_output}")
+    print(
+        "Wrote ASReview screening exports to "
+        f"{args.screening_output_dir.resolve()}"
+    )
 
 
 if __name__ == "__main__":
